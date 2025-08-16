@@ -96,7 +96,7 @@ module.exports = app.listen(port, function (err) {
   }
   var uri = 'http://localhost:' + port
   console.log('Listening at ' + uri + '\n')
-  opn(uri)
+  // opn(uri) // Commented out to prevent auto-browser opening errors
 })
 //
 
