@@ -1,0 +1,11 @@
+
+> new-item@1.0.0 dev
+> node build/dev-server.js
+
+[HPM] Proxy created: /api  ->  http://localhost:8081
+Listening at http://localhost:8081
+
+Listening at http://localhost:8080
+
+ DONE  Compiled successfully in 904ms11:00:16 AM
+
