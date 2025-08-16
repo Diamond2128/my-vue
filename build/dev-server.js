@@ -20,12 +20,28 @@ var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
-  quiet: true////////////////////
+  quiet: true,
+  // 添加性能优化选项
+  stats: {
+    colors: true,
+    chunks: false,
+    modules: false,
+    children: false
+  },
+  // 启用缓存
+  cache: true,
+  // 减少文件系统调用
+  watchOptions: {
+    poll: false,
+    ignored: /node_modules/
+  }
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
-  heartbeat: 2000
+  heartbeat: 2000,
+  // 优化热重载
+  reload: true
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
@@ -56,7 +72,11 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+app.use(staticPath, express.static('./static', {
+  // 添加静态文件缓存
+  maxAge: '1d',
+  etag: true
+}))
 
 
 //
