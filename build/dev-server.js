@@ -3,7 +3,7 @@ if (!process.env.NODE_ENV) {process.env.NODE_ENV = JSON.parse(config.dev.env.NOD
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var opn = require('opn')
+// var opn = require('opn') // 注释掉有问题的 opn 模块
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
@@ -96,7 +96,7 @@ module.exports = app.listen(port, function (err) {
   }
   var uri = 'http://localhost:' + port
   console.log('Listening at ' + uri + '\n')
-  opn(uri)
+  // opn(uri) // 注释掉自动打开浏览器的功能
 })
 //
 

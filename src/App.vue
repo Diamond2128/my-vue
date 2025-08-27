@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import ThisDialog from './components/Dialog'
-import LoginForm from './parts/LoginForm'
+import ThisDialog from './components/dialog'
+import LoginForm from './components/logform'
 export default {
   components: {
     ThisDialog,
