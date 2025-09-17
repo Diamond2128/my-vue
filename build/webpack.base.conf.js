@@ -25,7 +25,9 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     },
-    symlinks: false
+    symlinks: false,
+    // 添加缓存优化
+    cache: true
   },
   module: {
     rules: [
@@ -37,7 +39,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        options: {
+          cacheDirectory: true,
+          cacheCompression: false
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
