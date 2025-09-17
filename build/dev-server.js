@@ -20,12 +20,29 @@ var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
-  quiet: true////////////////////
+  quiet: true,
+  // 添加性能优化选项
+  stats: {
+    colors: true,
+    chunks: false,
+    children: false,
+    modules: false
+  },
+  // 启用缓存
+  cache: true,
+  // 优化文件系统访问
+  lazy: false,
+  // 减少内存使用
+  serverSideRender: false
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
-  heartbeat: 2000
+  heartbeat: 2000,
+  // 优化热重载性能
+  reload: true,
+  // 减少日志输出
+  quiet: true
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
