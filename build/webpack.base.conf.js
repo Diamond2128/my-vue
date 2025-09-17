@@ -12,6 +12,7 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  cache: true,
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -25,7 +26,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     },
-    symlinks: false
+    symlinks: false,
+    modules: [resolve('src'), resolve('node_modules')]
   },
   module: {
     rules: [
@@ -37,7 +39,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        options: {
+          cacheDirectory: true
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

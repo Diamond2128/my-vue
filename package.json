@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "dev:fast": "node start-dev-fast.js",
     "start": "node build/dev-server.js",
+    "start:fast": "node start-dev-fast.js",
     "build": "node build/build.js"
   },
   "dependencies": {
